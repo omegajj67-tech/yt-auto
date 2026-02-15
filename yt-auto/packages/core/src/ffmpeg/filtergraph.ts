@@ -28,7 +28,7 @@ function resolvePosition(
   canvasW: number,
   canvasH: number,
 ): { x: string; y: string } {
-  const resolveAxis = (val: number | string, canvasDim: number, label: "w" | "h", overlayDim: "overlay_w" | "overlay_h") => {
+  const resolveAxis = (val: number | string, canvasDim: number, label: "w" | "h", overlayDim: "overlay_w" | "overlay_h" | "text_w" | "text_h") => {
     if (typeof val === "number") return String(val);
     switch (val) {
       case "center": return `(${label === "w" ? "W" : "H"}-${overlayDim})/2`;
@@ -40,8 +40,8 @@ function resolvePosition(
     }
   };
   return {
-    x: resolveAxis(pos.x, canvasW, "w", "overlay_w"),
-    y: resolveAxis(pos.y, canvasH, "h", "overlay_h"),
+    x: resolveAxis(pos.x, canvasW, "w", "text_w"),
+    y: resolveAxis(pos.y, canvasH, "h", "text_h"),
   };
 }
 
